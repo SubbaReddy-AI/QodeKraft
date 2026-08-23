@@ -1,0 +1,107 @@
+services:
+
+  # ==========================================
+  # MYSQL DATABASE
+  # ==========================================
+
+  mysql:
+    image: mysql:8.4
+    container_name: qodekraft_mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_DATABASE: qodekraft
+      MYSQL_ROOT_PASSWORD: "Password"
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - qodekraft_mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h localhost -u root -p$${MYSQL_ROOT_PASSWORD}"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+
+  # ==========================================
+  # FASTAPI BACKEND
+  # ==========================================
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    container_name: qodekraft_backend
+    restart: unless-stopped
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    environment:
+
+      APP_NAME: "QodeKraft API"
+      APP_ENV: "production"
+      DEBUG: "False"
+      API_PREFIX: "/api/v1"
+
+      # MYSQL
+      MYSQL_HOST: "mysql"
+      MYSQL_PORT: "3306"
+      MYSQL_DATABASE: "qodekraft"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "Password"
+
+      DATABASE_URL: "mysql+pymysql://root:Password@mysql:3306/qodekraft?charset=utf8mb4"
+
+      # SECURITY
+      SECRET_KEY: "7Gs967yD6sl7esAxHk6ICMzQeR-YQAvNyNbbZrcJ5WSbT8OODCxPgYIJVlu7s7_"
+      ACCESS_TOKEN_EXPIRE_MINUTES: "60"
+
+      # FRONTEND
+      FRONTEND_URL: "http://localhost:5173"
+      ADMIN_URL: "http://localhost:5174"
+
+      # UPLOADS
+      UPLOAD_DIR: "app/uploads"
+      MAX_UPLOAD_SIZE_MB: "25"
+
+      # EMAIL
+      SMTP_HOST: "smtp.gmail.com"
+      SMTP_PORT: "587"
+      SMTP_USERNAME: "qodekraft@gmail.com"
+      SMTP_PASSWORD: "qhqqjwrbewmtnrgy"
+      EMAIL_FROM: "qodekraft@gmail.com"
+
+      # ADMIN
+      ADMIN_EMAIL: "qodekraft@gmail.com"
+      ADMIN_PASSWORD: "Ahemanth@143"
+
+      # RAZORPAY
+      RAZORPAY_KEY_ID: ""
+      RAZORPAY_KEY_SECRET: ""
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - qodekraft_uploads:/app/app/uploads
+
+
+# ==========================================
+# DOCKER VOLUMES
+# ==========================================
+
+volumes:
+
+  qodekraft_mysql_data:
+
+  qodekraft_uploads:

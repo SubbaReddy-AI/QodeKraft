@@ -1,0 +1,280 @@
+/* ==========================================================
+   QODEKRAFT — SIMPLE PREMIUM WEBSITE REFRESH
+   Clean visual hierarchy, strong imagery, minimal metadata.
+========================================================== */
+
+:root {
+  --qk-ink: #050914;
+  --qk-panel: #0a1220;
+  --qk-panel-2: #0d1728;
+  --qk-line: rgba(255,255,255,.09);
+  --qk-blue: #3f7cff;
+  --qk-cyan: #28d7ff;
+  --qk-purple: #9b7cff;
+}
+
+body {
+  font-family: Inter, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #050914;
+}
+
+/* ---------- NAVIGATION ---------- */
+.qk-navbar {
+  height: 76px !important;
+  background: rgba(4,8,16,.84) !important;
+  border-bottom: 1px solid rgba(255,255,255,.07) !important;
+  backdrop-filter: blur(22px) saturate(140%);
+}
+.qk-navbar-container { max-width: 1180px !important; height: 76px !important; }
+.qk-navbar-logo { width: 142px !important; display:flex; align-items:center; }
+.qk-navbar-logo img { width: 142px !important; height: 42px !important; object-fit:contain; }
+.qk-nav-links { gap: 5px !important; }
+.qk-nav-link {
+  padding: 9px 11px !important;
+  border-radius: 9px;
+  font-size: .73rem !important;
+  font-weight: 650;
+  color: #8e9db5 !important;
+  transition: .2s ease;
+}
+.qk-nav-link:hover { color:#fff !important; background:rgba(255,255,255,.045); }
+.qk-nav-link.active { color:#fff !important; background:rgba(63,124,255,.12); }
+.qk-navbar-action .btn { min-height: 43px !important; padding: 0 17px !important; border-radius: 11px !important; font-size:.73rem; }
+
+/* ---------- COMMON PAGE HERO ---------- */
+.inner-hero {
+  min-height: 470px !important;
+  padding: 118px 0 72px !important;
+  display:flex;
+  align-items:center;
+  background-position:center !important;
+}
+.inner-hero::after { opacity:.12 !important; }
+.inner-hero h1 {
+  max-width: 900px;
+  font-size: clamp(3rem, 6vw, 5.6rem) !important;
+  letter-spacing:-.055em;
+  line-height:.98;
+}
+.inner-hero p { max-width: 680px; font-size:1rem; color:#a9b7cb; line-height:1.75; margin-top:20px; }
+.section-eyebrow { font-size:.68rem !important; font-weight:800 !important; letter-spacing:.16em !important; text-transform:uppercase; }
+.service-hero { background:linear-gradient(90deg,rgba(4,8,16,.96),rgba(4,8,16,.78)), url('/images/premium/bg-services.svg') center/cover !important; }
+.academy-hero { background:linear-gradient(90deg,rgba(4,8,16,.95),rgba(4,8,16,.60)), url('/imge/academy/01-academy-hero.svg') center/cover !important; }
+.internship-hero { background:linear-gradient(90deg,rgba(4,8,16,.95),rgba(4,8,16,.62)), url('/images/premium/bg-internships.svg') center/cover !important; }
+.projects-hero { background:linear-gradient(90deg,rgba(4,8,16,.95),rgba(4,8,16,.60)), url('/images/premium/bg-projects.svg') center/cover !important; }
+.careers-hero { background-image:none !important; }
+
+/* Academy hero */
+.academy-hero-layout { display:grid !important; grid-template-columns:minmax(0,1fr) minmax(360px,480px) !important; gap:55px !important; align-items:center !important; }
+.academy-hero-card {
+  transform:none !important;
+  min-height:220px !important;
+  padding:28px !important;
+  border-radius:24px !important;
+  border:1px solid rgba(111,158,255,.22) !important;
+  background:rgba(8,16,30,.74) !important;
+  backdrop-filter:blur(18px);
+  box-shadow:0 30px 80px rgba(0,0,0,.32);
+}
+.academy-hero-card strong { font-size:1.25rem; margin-top:18px; }
+.academy-hero-card span { color:#92a4bd; line-height:1.7; }
+
+/* Academy imagery */
+.academy-hero-visuals{display:grid;gap:14px;align-items:stretch;}
+.academy-hero-card-main{overflow:hidden;padding:0!important;min-height:0!important;}
+.academy-hero-card-main>img{display:block;width:100%;height:225px;object-fit:cover;}
+.academy-hero-card-content{display:flex;align-items:flex-start;gap:12px;padding:18px 20px 20px;color:#69dfff;}
+.academy-hero-card-content strong{display:block;margin:0!important;font-size:1.05rem!important;color:#fff;}
+.academy-hero-card-content span{display:block;margin-top:4px;color:#92a4bd;font-size:.82rem;line-height:1.5;}
+.academy-hero-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.academy-mini-card{overflow:hidden;border:1px solid rgba(111,158,255,.2);border-radius:18px;background:rgba(8,16,30,.74);box-shadow:0 20px 50px rgba(0,0,0,.22);}
+.academy-mini-card img{display:block;width:100%;height:95px;object-fit:cover;}
+.academy-mini-card strong{display:block;padding:10px 12px 12px;color:#e7efff;font-size:.78rem;}
+
+.academy-cert-image{margin:18px 0 20px;overflow:hidden;border:1px solid rgba(111,158,255,.16);border-radius:18px;background:#08101f;box-shadow:0 18px 45px rgba(0,0,0,.2);}
+.academy-cert-image img{display:block;width:100%;height:170px;object-fit:cover;}
+/* Services hero */
+.inner-hero-layout { position:relative; z-index:2; display:grid !important; grid-template-columns:minmax(0,1fr) 320px !important; gap:55px !important; align-items:center; }
+.service-hero-orbit { transform:none !important; width:300px !important; height:300px !important; opacity:1 !important; }
+.service-orbit-center { width:100px !important; height:100px !important; }
+.inner-hero-scroll { display:none !important; }
+
+/* ---------- SECTION HEADINGS ---------- */
+.section { padding: 88px 0 !important; }
+.section-header { margin-bottom:34px !important; }
+.section-header h2 { font-size:clamp(2.2rem,4.3vw,4rem) !important; letter-spacing:-.05em; }
+.section-header p { max-width:650px; font-size:.96rem; line-height:1.75; }
+
+/* ---------- UNIVERSAL IMAGE CARD ---------- */
+.course-grid,.internship-cards,.all-project-grid,.job-grid { gap:20px !important; }
+.course-card,.internship-card,.project-card,.job-card,.service-detail-card {
+  overflow:hidden !important;
+  border:1px solid var(--qk-line) !important;
+  border-radius:22px !important;
+  background:linear-gradient(150deg,#0c1728 0%,#07101d 100%) !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.20) !important;
+}
+.premium-card-image-link { display:block; }
+.course-card-image,.internship-card-image,.project-card-image,.job-card-image,.service-detail-image {
+  height:225px !important;
+  position:relative;
+  overflow:hidden;
+  background:#091322;
+}
+.course-card-image img,.internship-card-image img,.project-card-image img,.job-card-image img,.service-detail-image img {
+  width:100% !important; height:100% !important; object-fit:cover !important; display:block;
+  transition:transform .55s ease, filter .35s ease;
+}
+.premium-simple-card:hover .premium-card-image img,
+.service-detail-card:hover .service-detail-image img,
+.job-card:hover .job-card-image img { transform:scale(1.045); filter:saturate(1.05); }
+.premium-image-tag {
+  position:absolute; left:15px; bottom:14px;
+  padding:7px 10px; border-radius:999px;
+  color:#eef5ff; background:rgba(3,8,18,.72);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(12px);
+  font-size:.61rem; font-weight:800; letter-spacing:.09em; text-transform:uppercase;
+}
+.premium-card-title { padding:17px 18px 14px !important; background:transparent !important; border-bottom:1px solid rgba(255,255,255,.065) !important; }
+.premium-card-title span { display:block; margin-bottom:6px; color:#70a8ff !important; font-size:.62rem !important; font-weight:800 !important; letter-spacing:.12em; text-transform:uppercase; }
+.premium-card-title strong { font-size:1.18rem !important; line-height:1.25 !important; }
+.premium-card-body { padding:16px 18px 18px !important; }
+.premium-card-body p { min-height:58px; color:#96a6bd !important; font-size:.84rem !important; line-height:1.65 !important; }
+.premium-level { display:inline-flex; padding:6px 9px; margin-bottom:11px; border-radius:999px; color:#b8d2ff; background:rgba(63,124,255,.10); border:1px solid rgba(63,124,255,.18); font-size:.63rem; font-weight:800; }
+.premium-text-link { display:inline-flex; align-items:center; gap:7px; margin-top:4px; color:#dce9ff; font-size:.75rem; font-weight:800; }
+.premium-text-link:hover { color:#53d9ff; }
+
+/* ---------- SERVICES ---------- */
+.services-detail-grid { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:20px !important; }
+.service-detail-card { padding:0 !important; }
+.service-detail-card .qk-media-caption { padding:16px 18px 14px !important; background:transparent !important; border-bottom:1px solid rgba(255,255,255,.065) !important; }
+.service-detail-card .qk-media-caption span { color:#70a8ff !important; font-size:.62rem !important; }
+.service-detail-card .qk-media-caption strong { font-size:1.18rem !important; }
+.service-detail-top { display:none !important; }
+.service-detail-card h3 { display:none !important; }
+.service-detail-card p { padding:0 18px; margin:15px 0 18px !important; color:#96a6bd !important; font-size:.86rem !important; line-height:1.7 !important; }
+.service-detail-line { display:none !important; }
+
+/* ---------- PROJECTS ---------- */
+.project-page-grid { padding-top:20px !important; }
+.project-card-body { padding:17px 18px 18px !important; }
+.project-card-body p { min-height:54px; }
+.project-card-technologies { gap:5px !important; }
+.project-card-technologies span { padding:5px 7px !important; font-size:.62rem !important; }
+.project-card-footer { margin-top:14px !important; }
+
+/* ---------- CAREERS ---------- */
+.job-card-top { padding:16px 18px 0 !important; }
+.job-card-content { padding:10px 18px 18px !important; }
+.job-card-content h3 { font-size:1.18rem !important; }
+.job-card-content p { min-height:52px; font-size:.84rem !important; line-height:1.65 !important; }
+.job-card-meta { display:none !important; }
+.job-card-focus { display:flex; flex-wrap:wrap; gap:6px; margin-top:13px; }
+.job-card-focus span { padding:6px 8px; border-radius:8px; color:#aebed3; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.065); font-size:.62rem; }
+.job-card-footer { padding:0 18px 18px !important; border-top:0 !important; }
+
+/* ---------- DETAIL PAGES ---------- */
+.premium-detail-page { padding-top:95px !important; }
+.premium-detail-image { border-radius:24px !important; box-shadow:0 28px 75px rgba(0,0,0,.28) !important; }
+.premium-detail-image img { height:430px !important; }
+.detail-focus-list { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 28px; max-width:700px; }
+.detail-focus-list span { padding:9px 11px; border-radius:10px; color:#b8c8dc; background:#0a1424; border:1px solid rgba(255,255,255,.07); font-size:.7rem; }
+
+/* Registration selected program: no fee/duration */
+.registration-summary .summary-row { display:none !important; }
+.registration-summary .summary-badge { display:none !important; }
+
+/* ---------- REMOVE BUSINESS METADATA FROM USER-FACING CARDS ---------- */
+.course-card-info,.internship-card-meta,.internship-card-topline,.course-price { display:none !important; }
+
+/* ---------- MOBILE ---------- */
+@media(max-width:1050px) {
+  .qk-nav-links { gap:0 !important; }
+  .qk-nav-link { padding-inline:8px !important; }
+  .qk-navbar-action .btn { padding-inline:12px !important; }
+  .academy-hero-layout,.inner-hero-layout { grid-template-columns:1fr !important; }
+  .academy-hero-card,.service-hero-orbit { margin:0 auto; }
+  .services-detail-grid { grid-template-columns:1fr !important; }
+}
+@media(max-width:850px) {
+  .qk-nav-links,.qk-navbar-action { display:none !important; }
+  .qk-mobile-toggle { display:flex !important; }
+  .qk-navbar-logo,.qk-navbar-logo img { width:125px !important; }
+  .inner-hero { min-height:400px !important; padding:105px 0 58px !important; }
+  .inner-hero h1 { font-size:clamp(2.7rem,10vw,4.4rem) !important; }
+}
+@media(max-width:650px) {
+  .section { padding:65px 0 !important; }
+  .course-grid,.internship-cards,.all-project-grid,.job-grid { grid-template-columns:1fr !important; }
+  .course-card-image,.internship-card-image,.project-card-image,.job-card-image,.service-detail-image { height:205px !important; }
+  .academy-hero-card { min-height:auto !important; }
+  .premium-detail-image img { height:260px !important; }
+}
+
+/* Final Academy image override: preserve the full supplied course posters. */
+.qk-page-academy::before { background-image:none !important; }
+.academy-hero { background:#07101b !important; background-image:none !important; }
+.course-card-image {
+  aspect-ratio:16 / 9 !important;
+  height:auto !important;
+  min-height:0 !important;
+  background:#fff !important;
+  overflow:hidden !important;
+}
+.course-card-image img {
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  display:block !important;
+  background:#fff !important;
+}
+
+
+/* ==========================================================
+   CAREERS — FINAL IMAGE + BACKGROUND UPDATE
+   Supplied career posters stay fully visible inside their card.
+   No career background artwork is used.
+========================================================== */
+.qk-page-careers {
+  background-image: none !important;
+  background:
+    radial-gradient(circle at 78% 10%, rgba(47,107,255,.18), transparent 28%),
+    radial-gradient(circle at 18% 42%, rgba(139,92,246,.10), transparent 26%),
+    linear-gradient(180deg, #07101f 0%, #03050b 62%, #03050b 100%) !important;
+}
+.qk-page-careers::before {
+  background-image: none !important;
+  background: transparent !important;
+  opacity: 0 !important;
+}
+.qk-page-careers::after {
+  background: radial-gradient(circle at 65% 16%, rgba(37,215,255,.08), transparent 26%),
+             linear-gradient(180deg, rgba(3,5,11,.08), rgba(3,5,11,.28) 45%, rgba(3,5,11,.7) 100%) !important;
+}
+.qk-page-careers .careers-hero {
+  background: radial-gradient(circle at 72% 35%, rgba(47,107,255,.18), transparent 32%),
+              linear-gradient(135deg, #09162b 0%, #07101f 48%, #03050b 100%) !important;
+  background-image: none !important;
+}
+.qk-page-careers .job-card-image {
+  height: 235px !important;
+  aspect-ratio: 16 / 9 !important;
+  background: #f7f9ff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+.qk-page-careers .job-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  background: #f7f9ff !important;
+}
+@media (max-width: 650px) {
+  .qk-page-careers .job-card-image { height: auto !important; aspect-ratio: 16 / 9 !important; }
+}

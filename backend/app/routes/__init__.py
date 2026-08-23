@@ -1,0 +1,31 @@
+from app.routes import (
+    auth,
+    users,
+    services,
+    courses,
+    mentors,
+    internships,
+    projects,
+    careers,
+    contacts,
+    newsletter,
+    testimonials,
+    news,
+    course_registrations,
+)
+
+__all__ = [
+    "auth",
+    "users",
+    "services",
+    "courses",
+    "mentors",
+    "internships",
+    "projects",
+    "careers",
+    "contacts",
+    "newsletter",
+    "testimonials",
+    "news",
+    "course_registrations",
+]

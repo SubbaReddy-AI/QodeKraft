@@ -1,0 +1,216 @@
+:root {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #e8ecff;
+  background: #0a0d18;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #0a0d18;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(96, 80, 255, 0.12),
+      transparent 30%
+    ),
+    #0a0d18;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  outline: none;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.admin-loading {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: #c8cdea;
+  font-weight: 700;
+}
+
+.admin-login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.admin-login-card {
+  width: min(100%, 460px);
+  padding: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background: rgba(17, 22, 41, 0.9);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+}
+
+.admin-login-logo {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 25px;
+  border-radius: 17px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #7167ff, #00c9df);
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.admin-login-eyebrow {
+  color: #8f87ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.admin-login-card h1 {
+  margin: 12px 0 10px;
+  color: #ffffff;
+  font-size: 32px;
+}
+
+.admin-login-card > p {
+  margin: 0 0 30px;
+  color: #9fa8c5;
+  line-height: 1.65;
+}
+
+.admin-login-card form,
+.admin-form {
+  display: grid;
+  gap: 18px;
+}
+
+.admin-login-card label,
+.admin-form label {
+  display: grid;
+  gap: 8px;
+  color: #cdd2e8;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.admin-login-card input,
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  min-height: 46px;
+  padding: 11px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f5f6ff;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.admin-form textarea {
+  padding-top: 13px;
+}
+
+.admin-login-card input:focus,
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  border-color: #8279ff;
+  box-shadow: 0 0 0 3px rgba(130, 121, 255, 0.15);
+}
+
+.input-with-icon {
+  position: relative;
+  display: block;
+}
+
+.input-with-icon svg {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  color: #9299bb;
+  transform: translateY(-50%);
+}
+
+.input-with-icon input {
+  padding-left: 43px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 10px !important;
+}
+
+.checkbox-label input {
+  width: 17px;
+  min-height: auto;
+  height: 17px;
+  accent-color: #756bff;
+}
+
+.admin-primary-button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 17px;
+  border: 0;
+  border-radius: 10px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #7369ff, #00aeca);
+  box-shadow: 0 10px 25px rgba(99, 87, 255, 0.22);
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.admin-primary-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.admin-primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-form-error {
+  margin: 0;
+  padding: 11px 13px;
+  border: 1px solid rgba(255, 95, 120, 0.3);
+  border-radius: 9px;
+  color: #ff9bab;
+  background: rgba(255, 83, 110, 0.1);
+  font-size: 13px;
+}

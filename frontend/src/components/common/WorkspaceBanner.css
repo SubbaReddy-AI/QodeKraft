@@ -1,0 +1,51 @@
+.qk-workspace-banner {
+  position: relative;
+  min-height: 285px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: #02050d;
+}
+.qk-workspace-banner-image {
+  position: absolute;
+  inset: 0;
+  background: url('/images/office/qodekraft-workspace.jpg') center 45% / cover no-repeat;
+  filter: saturate(.68) contrast(1.08);
+  transform: scale(1.03);
+}
+.qk-workspace-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(2,5,13,.94), rgba(2,5,13,.58), rgba(2,5,13,.78)), linear-gradient(180deg, rgba(2,5,13,.22), #02050d);
+}
+.qk-workspace-banner-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-top: 72px;
+  padding-bottom: 38px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+}
+.qk-workspace-banner-kicker {
+  color: #67e8f9;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+.qk-workspace-banner h2 {
+  margin: 10px 0 8px;
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  letter-spacing: -.045em;
+}
+.qk-workspace-banner p { margin: 0; color: #a7b4c8; font-size: .98rem; }
+.qk-workspace-banner img { width: 155px; max-width: 28vw; opacity: .92; }
+@media (max-width: 700px) {
+  .qk-workspace-banner { min-height: 250px; }
+  .qk-workspace-banner-content { padding-top: 58px; }
+  .qk-workspace-banner img { display: none; }
+}
