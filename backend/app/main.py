@@ -8,7 +8,7 @@ from app.config import settings
 from app.database.base import Base
 from app.database.connection import engine
 
-# Import the model package once so every SQLAlchemy table is registered.
+# Import models so SQLAlchemy registers all tables
 import app.models  # noqa: F401
 
 from app.routes import (
@@ -45,9 +45,7 @@ app = FastAPI(
 # DATABASE
 # ============================================================
 
-Base.metadata.create_all(
-    bind=engine
-)
+Base.metadata.create_all(bind=engine)
 
 
 # ============================================================
@@ -76,71 +74,26 @@ API = settings.API_PREFIX
 # ROUTES
 # ============================================================
 
-app.include_router(
-    auth.router,
-    prefix=API,
-)
+app.include_router(auth.router, prefix=API)
+app.include_router(users.router, prefix=API)
+app.include_router(services.router, prefix=API)
+app.include_router(courses.router, prefix=API)
+app.include_router(mentors.router, prefix=API)
+app.include_router(internships.router, prefix=API)
+app.include_router(projects.router, prefix=API)
+app.include_router(careers.router, prefix=API)
+app.include_router(contacts.router, prefix=API)
+app.include_router(newsletter.router, prefix=API)
+app.include_router(testimonials.router, prefix=API)
+app.include_router(news.router, prefix=API)
 
-app.include_router(
-    users.router,
-    prefix=API,
-)
-
-app.include_router(
-    services.router,
-    prefix=API,
-)
-
-app.include_router(
-    courses.router,
-    prefix=API,
-)
-
-app.include_router(
-    mentors.router,
-    prefix=API,
-)
-
-app.include_router(
-    internships.router,
-    prefix=API,
-)
-
-app.include_router(
-    projects.router,
-    prefix=API,
-)
-
-app.include_router(
-    careers.router,
-    prefix=API,
-)
-
-app.include_router(
-    contacts.router,
-    prefix=API,
-)
-
-app.include_router(
-    newsletter.router,
-    prefix=API,
-)
-
-app.include_router(
-    testimonials.router,
-    prefix=API,
-)
-
-app.include_router(
-    news.router,
-    prefix=API,
-)
-
+# Course registration routes
 app.include_router(
     course_registrations.router,
     prefix=API,
 )
 
+# Certificate routes
 app.include_router(
     certificates_router,
     prefix=API,
@@ -160,9 +113,7 @@ upload_directory.mkdir(
 
 app.mount(
     "/uploads",
-    StaticFiles(
-        directory=str(upload_directory),
-    ),
+    StaticFiles(directory=str(upload_directory)),
     name="uploads",
 )
 
