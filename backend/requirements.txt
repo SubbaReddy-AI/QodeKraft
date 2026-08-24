@@ -22,3 +22,4 @@ razorpay
 
 pytest
 httpx
+mysqlclient
