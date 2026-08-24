@@ -42,14 +42,14 @@ def start_registration(
     db: Session = Depends(get_db),
 ):
     course = (
-        db.query(Course)
-        .filter(
-            (Course.slug == payload.course_slug)
-            | (Course.title == payload.course_slug),
-            Course.is_active == True,
-        )
-        .first()
+    db.query(Course)
+    .filter(
+        Course.is_active == True,
+        (Course.slug == payload.course_slug)
+        | (Course.title == payload.course_slug)
     )
+    .first()
+)
     if not course:
         raise HTTPException(status_code=404, detail="Selected course was not found.")
     # QodeKraft uses one fixed fee for every Academy course.
