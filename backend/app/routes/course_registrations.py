@@ -32,7 +32,6 @@ COURSE_REGISTRATION_FEE = 8500
 def make_registration_id() -> str:
     return f"QKREG-{datetime.utcnow().year}-{uuid4().hex[:8].upper()}"
 
-
 @router.post(
     "/start",
     response_model=RegistrationStartResponse,
@@ -44,7 +43,11 @@ def start_registration(
 ):
     course = (
         db.query(Course)
-        .filter(Course.slug == payload.course_slug, Course.is_active == True)
+        .filter(
+            (Course.slug == payload.course_slug)
+            | (Course.title == payload.course_slug),
+            Course.is_active == True,
+        )
         .first()
     )
     if not course:
