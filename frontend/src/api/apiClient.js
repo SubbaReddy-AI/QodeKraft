@@ -1,6 +1,6 @@
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
-  "http://localhost:8000/api/v1";
+  "https://qodekraft.onrender.com/api/v1";
 
 async function request(
   endpoint,
