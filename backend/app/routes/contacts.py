@@ -1,3 +1,4 @@
+from dns.rdtypes import dnskeybase
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
@@ -22,6 +23,7 @@ def create_contact(
     data: ContactCreate,
     db: Session = Depends(get_db),
 ):
+    # Create contact record
     contact = ContactMessage(
         name=data.name,
         email=data.email,
@@ -35,8 +37,10 @@ def create_contact(
     db.commit()
     db.refresh(contact)
 
-    # Update Excel file
+    # Update Excel and Google Drive automatically
+    print("CONTACT SAVED - STARTING EXCEL UPDATE")
     export_all_data(db)
+    print("EXCEL UPDATE FINISHED")
 
     # Send admin notification
     notify_admin(

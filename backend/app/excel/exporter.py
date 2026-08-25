@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from app.models.course_registration import CourseRegistration
 from app.models.contact_message import ContactMessage
 from app.models.internship_application import InternshipApplication
-
+from app.services.google_drive_service import upload_excel_to_google_drive
 
 EXCEL_DIR = Path("app/exports")
 EXCEL_DIR.mkdir(parents=True, exist_ok=True)
@@ -122,10 +122,13 @@ def export_all_data(db: Session):
             for column in internship_columns
         ])
 
-    # ============================================================
-    # SAVE EXCEL
-    # ============================================================
+   # ============================================================
+# SAVE EXCEL
+# ============================================================
 
     workbook.save(EXCEL_FILE)
+
+# Upload the updated Excel to Google Drive
+    upload_excel_to_google_drive(EXCEL_FILE)
 
     return EXCEL_FILE

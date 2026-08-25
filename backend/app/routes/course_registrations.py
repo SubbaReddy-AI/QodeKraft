@@ -1,3 +1,5 @@
+from dns.rdtypes import dnskeybase
+from dns.rdtypes import dnskeybase
 from datetime import datetime
 from uuid import uuid4
 
@@ -22,7 +24,7 @@ from app.services.razorpay_service import (
     payment_reference_values,
     verify_signature,
 )
-
+from app.excel.exporter import export_all_data
 
 router = APIRouter(prefix="/course-registrations", tags=["Course Registrations"])
 
@@ -178,9 +180,15 @@ def verify_registration_payment(
 
     try:
         db.commit()
+
+        export_all_data(db)
+
     except IntegrityError as exc:
         db.rollback()
-        raise HTTPException(status_code=409, detail="This payment or UTR has already been registered.") from exc
+        raise HTTPException(
+            status_code=409,
+        detail="This payment or UTR has already been registered.",
+    ) from exc
 
     subject = f"QodeKraft Registration Successful — {registration.registration_id}"
     body = f"""Hello {registration.full_name},

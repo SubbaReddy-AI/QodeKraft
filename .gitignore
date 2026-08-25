@@ -69,3 +69,10 @@ Thumbs.db
 
 *.log
 logs/
+
+# ==========================================
+# GOOGLE DRIVE / EXCEL
+# ==========================================
+
+backend/app/credentials/
+backend/app/exports/
