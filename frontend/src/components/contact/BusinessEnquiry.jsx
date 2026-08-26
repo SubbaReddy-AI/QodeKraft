@@ -23,10 +23,10 @@ function BusinessEnquiry() {
           </p>
 
           <a
-            href="mailto:offical@qodekraft.com"
+            href="mailto:QodeKraft@gmail.com"
             className="btn btn-secondary"
           >
-            offical@qodekraft.com
+            QodeKraft@gmail.com
           </a>
         </div>
       </Container>

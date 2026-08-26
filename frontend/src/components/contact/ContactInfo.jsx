@@ -11,7 +11,7 @@ function ContactInfo() {
     {
       icon: Mail,
       title: "Email",
-      value: "offical@qodekraft.com"
+      value: "QodeKraft@gmail.com"
     },
     {
       icon: Phone,
