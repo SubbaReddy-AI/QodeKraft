@@ -44,10 +44,11 @@ def create_contact(
 ):
     name = str(payload.get("name", "")).strip()
     email = str(payload.get("email", "")).strip().lower()
-    phone = str(payload.get("phone", "")).strip()
-    subject = str(payload.get("subject", "")).strip()
+    company = str(payload.get("company", "")).strip()
+    service = str(payload.get("service", "")).strip()
     message = str(payload.get("message", "")).strip()
 
+    # Validate required fields
     if not name:
         raise HTTPException(
             status_code=400,
@@ -66,11 +67,13 @@ def create_contact(
             detail="Message is required.",
         )
 
+    # Create contact record using ONLY fields
+    # that actually exist in ContactMessage
     contact = ContactMessage(
         name=name,
         email=email,
-        phone=phone or None,
-        subject=subject or None,
+        company=company or None,
+        service=service or None,
         message=message,
     )
 
