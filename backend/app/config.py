@@ -4,39 +4,67 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    # ============================================================
+    # APPLICATION
+    # ============================================================
+
     APP_NAME: str = "QodeKraft API"
     APP_ENV: str = "production"
     DEBUG: bool = False
 
     API_PREFIX: str = "/api/v1"
 
-    # Required environment variables
+    # ============================================================
+    # DATABASE / SECURITY
+    # ============================================================
+
     DATABASE_URL: str
     SECRET_KEY: str
 
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
-    # Change these to your real deployed frontend URLs
-    FRONTEND_URL: str = "http://localhost:5173"
-    ADMIN_URL: str = "http://localhost:5174"
+    # ============================================================
+    # FRONTEND / ADMIN
+    # ============================================================
+
+    FRONTEND_URL: str = "https://qodekraft.vercel.app"
+    ADMIN_URL: str = "https://qodekraft.vercel.app"
+
+    # ============================================================
+    # FILE UPLOADS
+    # ============================================================
 
     UPLOAD_DIR: str = "app/uploads"
     MAX_UPLOAD_SIZE_MB: int = 25
 
+    # ============================================================
+    # EMAIL
+    # ============================================================
+
     SMTP_HOST: str = "smtp.gmail.com"
     SMTP_PORT: int = 587
+
     SMTP_USERNAME: str = ""
     SMTP_PASSWORD: str = ""
+
     EMAIL_FROM: str = ""
     ADMIN_EMAIL: str = ""
+
+    # ============================================================
+    # RAZORPAY
+    # ============================================================
 
     RAZORPAY_KEY_ID: str = ""
     RAZORPAY_KEY_SECRET: str = ""
 
+    # ============================================================
+    # SETTINGS CONFIGURATION
+    # ============================================================
+
     model_config = SettingsConfigDict(
         env_file=".env",
         case_sensitive=True,
-        extra="ignore"
+        extra="ignore",
     )
 
 
