@@ -1,52 +1,51 @@
-from fastapi import (
-    APIRouter,
-    Depends,
-    HTTPException,
-)
-
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.database.connection import get_db
 from app.models.certificate import Certificate
-from app.schemas.certificate import CertificateResponse
+from app.utils.dependencies import get_current_admin
 
 
 router = APIRouter(
     prefix="/certificates",
-    tags=["Certificates"]
+    tags=["Certificates"],
 )
 
 
-@router.get(
-    "/verify/{certificate_id}",
-    response_model=CertificateResponse
-)
+@router.get("")
+def get_certificates(
+    db: Session = Depends(get_db),
+    admin=Depends(get_current_admin),
+):
+    certificates = (
+        db.query(Certificate)
+        .order_by(Certificate.id.desc())
+        .all()
+    )
+
+    return certificates
+
+
+@router.get("/verify/{certificate_id}")
 def verify_certificate(
     certificate_id: str,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
-
     certificate = (
         db.query(Certificate)
         .filter(
-            Certificate.certificate_id
-            == certificate_id
+            Certificate.certificate_id == certificate_id
         )
         .first()
     )
 
-    if certificate is None:
-
+    if not certificate:
         raise HTTPException(
             status_code=404,
-            detail="Certificate not found."
+            detail="Certificate not found",
         )
 
-    if certificate.status.upper() != "VALID":
-
-        raise HTTPException(
-            status_code=400,
-            detail="Certificate is not valid."
-        )
-
-    return certificate
+    return {
+        "valid": True,
+        "certificate": certificate,
+    }
