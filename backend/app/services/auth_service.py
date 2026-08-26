@@ -12,9 +12,8 @@ def register_user(
     db: Session,
     name: str,
     email: str,
-    password: str
+    password: str,
 ):
-
     existing = (
         db.query(User)
         .filter(User.email == email)
@@ -27,7 +26,7 @@ def register_user(
     user = User(
         name=name,
         email=email,
-        password_hash=hash_password(password)
+        password_hash=hash_password(password),
     )
 
     db.add(user)
@@ -40,9 +39,8 @@ def register_user(
 def authenticate_user(
     db: Session,
     email: str,
-    password: str
+    password: str,
 ):
-
     user = (
         db.query(User)
         .filter(User.email == email)
@@ -54,7 +52,7 @@ def authenticate_user(
 
     if not verify_password(
         password,
-        user.password_hash
+        user.password_hash,
     ):
         return None
 
@@ -62,7 +60,6 @@ def authenticate_user(
 
 
 def generate_token(user: User):
-
     return create_access_token(
-        user.id
+        user.id,
     )

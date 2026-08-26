@@ -55,6 +55,7 @@ Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://qode-kraft.vercel.app"
         "https://qodekraft.vercel.app",
     ],
     allow_credentials=True,

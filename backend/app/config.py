@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     # ============================================================
 
     FRONTEND_URL: str = "https://qodekraft.vercel.app"
-    ADMIN_URL: str = "https://qodekraft.vercel.app"
+    ADMIN_URL: str = "https://qode-kraft.vercel.app"
 
     # ============================================================
     # FILE UPLOADS

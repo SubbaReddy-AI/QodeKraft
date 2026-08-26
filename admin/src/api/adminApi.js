@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://qodekraft.onrender.com/api/v1";
+
 const adminApi = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_BASE_URL ||
-    "http://localhost:8000/api",
+  baseURL: API_BASE_URL,
   timeout: 15000,
   headers: {
     "Content-Type": "application/json",
@@ -24,6 +26,7 @@ adminApi.interceptors.request.use((config) => {
 
 adminApi.interceptors.response.use(
   (response) => response,
+
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem(
@@ -35,17 +38,25 @@ adminApi.interceptors.response.use(
   }
 );
 
-export const adminLogin = async (email, password) => {
+export const adminLogin = async (
+  email,
+  password
+) => {
   const response = await adminApi.post(
     "/auth/login",
-    { email, password }
+    {
+      email,
+      password,
+    }
   );
 
   return response.data;
 };
 
 export const getAdminProfile = async () => {
-  const response = await adminApi.get("/auth/me");
+  const response = await adminApi.get(
+    "/auth/me"
+  );
 
   return response.data;
 };
@@ -58,16 +69,28 @@ export const getDashboardStats = async () => {
   return response.data;
 };
 
-export const getAdminList = async (endpoint, params = {}) => {
-  const response = await adminApi.get(endpoint, {
-    params,
-  });
+export const getAdminList = async (
+  endpoint,
+  params = {}
+) => {
+  const response = await adminApi.get(
+    endpoint,
+    {
+      params,
+    }
+  );
 
   return response.data;
 };
 
-export const createAdminItem = async (endpoint, data) => {
-  const response = await adminApi.post(endpoint, data);
+export const createAdminItem = async (
+  endpoint,
+  data
+) => {
+  const response = await adminApi.post(
+    endpoint,
+    data
+  );
 
   return response.data;
 };
@@ -85,7 +108,10 @@ export const updateAdminItem = async (
   return response.data;
 };
 
-export const deleteAdminItem = async (endpoint, id) => {
+export const deleteAdminItem = async (
+  endpoint,
+  id
+) => {
   const response = await adminApi.delete(
     `${endpoint}/${id}`
   );
