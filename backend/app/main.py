@@ -55,14 +55,15 @@ Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://qode-kraft.vercel.app"
+        "https://qode-kraft.vercel.app",
         "https://qodekraft.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ============================================================
 # API PREFIX
